@@ -1,4 +1,5 @@
 from django.db import models
+from exams.models import ExerciseStudent
 
 
 class CourseType(models.Model):
@@ -52,7 +53,7 @@ class Student(models.Model):
     email = models.EmailField(
         verbose_name="Email"
     )
-    github_nik = models.CharField(
+    github_nick = models.CharField(
         verbose_name="Nick na githubie",
         max_length=100
     )
@@ -61,9 +62,14 @@ class Student(models.Model):
         verbose_name="Grupa",
         on_delete=models.CASCADE,
     )
+    exercises = models.ManyToManyField(
+        'exams.Exercise',
+        verbose_name="Zadania",
+        through='exams.ExerciseStudent'
+    )
 
     def __str__(self):
-        return f'{self.name} {self.surname}: {self.github_nik}'
+        return f'{self.name} {self.surname}: {self.github_nick}'
 
     class Meta:
         verbose_name = "Kursant"

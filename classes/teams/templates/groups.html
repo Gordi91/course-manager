@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Dodaj grupę</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label>Sygnatura
+                <input type="text" name="signature">
+            </label>
+        </div>
+        <div>
+            <label>Typ kursu
+                <select name="type">
+                    {% for type in types %}
+                        <option value="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+    <br /> <br /> <br /> <br />
+    <h2>Lista grup</h2>
+    <ul>
+        {% for group in groups %}
+            <li>{{ group }} <a href="{% url 'delete-group' group.id %}">Usuń</a> </li>
+        {% endfor %}
+    </ul>
+
+{% endblock%}

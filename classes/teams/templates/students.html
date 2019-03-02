@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h2>Dodaj kursanta</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label>Imię
+                <input type="text" name="name">
+            </label>
+        </div>
+        <div>
+            <label>Nazwisko
+                <input type="text" name="surname">
+            </label>
+        </div>
+        <div>
+            <label>E-mail
+                <input type="email" name="email">
+            </label>
+        </div>
+        <div>
+            <label>Github nik
+                <input type="text" name="github_nick">
+            </label>
+        </div>
+        <div>
+            <label>Grupa
+                <select name="group">
+                    {% for group in groups %}
+                        <option value="{{ group.id }}">{{ group.signature }}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+    <br /> <br /> <br /> <br />
+    <h2>Lista kursantów</h2>
+    <ul>
+        {% for student in students %}
+            <li>{{ student }} <a href="{% url 'delete-student' student.id %}">Usuń</a> </li>
+        {% endfor %}
+    </ul>
+
+{% endblock%}

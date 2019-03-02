@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <h2>Nawigacja</h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'list-types' %}">Typy kursów</a></li>
+                <li><a href="{% url 'list-groups' %}">Grupy</a></li>
+                <li><a href="{% url 'list-students' %}">Kursanci</a></li>
+                <li><a href="{% url 'list-exams' %}">Egzaminy</a></li>
+                <li><a href="{% url 'list-exercises' %}">Zadania</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

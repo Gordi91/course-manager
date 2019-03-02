@@ -31,5 +31,5 @@ urlpatterns = [
     path('exams/', CreateExam.as_view(), name='list-exams'),
     path('exercises/delete/<int:exercise_id>/', delete_exercise, name='delete-exercise'),
     path('exercises/', CreateExercise.as_view(), name='list-exercises'),
-    path('exam-result/')
+    # path('exam-result/')
 ]
